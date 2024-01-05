@@ -1,4 +1,4 @@
-Docker compose HTTP2 Nginx PHP
+Docker compose HTTP2 Nginx Node
 
 port 80 is set to redirect.
 
