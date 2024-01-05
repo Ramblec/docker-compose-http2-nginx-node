@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  webapp:
+  app:
     restart: unless-stopped
     build: .
     volumes:
@@ -9,18 +9,18 @@ services:
     networks:
       - node_network
       
-  proxy:
+  web:
     restart: unless-stopped
-    build: ./nginx
+    build: ./web
     ports:
       - 8080:443
       - 8081:80
     depends_on:
-      - webapp
+      - app
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/ssl/server.key:/etc/nginx/server.key
-      - ./nginx/ssl/server.crt:/etc/nginx/server.crt
+      - ./web/default.conf:/etc/nginx/conf.d/default.conf
+      - ./web/ssl/server.key:/etc/nginx/server.key
+      - ./web/ssl/server.crt:/etc/nginx/server.crt
     networks:
       - node_network
 
